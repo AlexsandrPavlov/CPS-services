@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { Template } = require('webpack');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const loader = require('sass-loader');
 
 module.exports = (env) => {
 	return {
@@ -21,7 +23,25 @@ module.exports = (env) => {
 				},
 				{
 					test: /\.s[ac]ss$/i,
-					use: ['style-loader', 'css-loader', 'sass-loader']
+					use: [
+						MiniCssExtractPlugin.loader,
+						'css-loader',
+						{
+							loader: 'postcss-loader',
+							options: {
+								postcssOptions: {
+									plugins: [
+										require('postcss-preset-env'),
+										autoprefixer({
+											overrideBrowserslist: ['ie >= 8', 'last 4 version']
+										})
+									]
+								}
+							}
+						},
+						'resolve-url-loader',
+						{ loader: 'sass-loader', options: { sourceMap: true } }
+					]
 				}
 			]
 		},
@@ -29,7 +49,10 @@ module.exports = (env) => {
 			new HtmlWebpackPlugin({
 				template: path.resolve(__dirname, 'src', 'index.html')
 			}),
-			new webpack.ProgressPlugin()
+			new webpack.ProgressPlugin(),
+			new MiniCssExtractPlugin({
+				filename: '[name].[contenthash].css'
+			})
 		],
 		devServer: {
 			static: {

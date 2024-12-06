@@ -1,10 +1,12 @@
 console.log('webpack work');
-let a = 1;
+let a = Math.random();
 switch (a) {
-	case 0:
-		console.log('a = 0');
+	case 0.235235236:
+		console.log('You WIN!');
+		console.log(a);
 		break;
 	default:
 		console.error('pizdec');
+		console.log(a);
 		break;
 }
