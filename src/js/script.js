@@ -1,1 +1,1 @@
-alert('Webpack is started!')
+console.log('webpack work');
