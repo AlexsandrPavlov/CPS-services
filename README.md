@@ -1,5 +1,12 @@
 ## Commands/Команды:
 
+### Install template/Установка шаблона
+
+```shell
+git clone "last version template"
+npm i
+```
+
 ### Starting a server for development/Запуск локального сервера для разработки
 
 ```shell
