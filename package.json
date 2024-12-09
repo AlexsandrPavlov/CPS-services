@@ -9,7 +9,6 @@
     "build:prod": "webpack --env mode=production",
     "serve": "webpack serve",
     "deploy": "gh-pages -d build"
-  
   },
   "author": "Alexsandr Pavlov",
   "license": "ISC",
@@ -29,6 +28,7 @@
     "group-css-media-queries-loader": "^4.3.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
+    "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.9.2",
     "prettier": "3.4.2",
     "resolve-url-loader": "^5.0.0",

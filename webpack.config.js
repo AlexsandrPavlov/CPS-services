@@ -14,6 +14,7 @@ module.exports = (env) => {
 		output: {
 			path: path.resolve(__dirname, 'build'),
 			filename: '[name].[contenthash].js',
+			assetModuleFilename: 'assets/images/[name].[contenthash].[ext]',
 			clean: true
 		},
 		module: {
