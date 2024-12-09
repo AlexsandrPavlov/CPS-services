@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const loader = require('sass-loader');
-const GhPagesWebpackPlugin = require('gh-pages-webpack-plugin');
+const GhPagesWebpackPlugin = require('gh-pages');
 
 module.exports = (env) => {
 	return {
@@ -54,31 +54,29 @@ module.exports = (env) => {
 				},
 				{
 					test: /\.(jpe?g|png|webp|gif|svg)$/i,
-					use: devMode
-						? []
-						: [
-								{
-									loader: 'image-webpack-loader',
-									options: {
-										mozjpeg: {
-											progressive: true
-										},
-										optipng: {
-											enabled: false
-										},
-										pngquant: {
-											quality: [0.65, 0.9],
-											speed: 4
-										},
-										gifsicle: {
-											interlaced: false
-										},
-										webp: {
-											quality: 75
-										}
-									}
+					use: [
+						{
+							loader: 'image-webpack-loader',
+							options: {
+								mozjpeg: {
+									progressive: true
+								},
+								optipng: {
+									enabled: false
+								},
+								pngquant: {
+									quality: [0.65, 0.9],
+									speed: 4
+								},
+								gifsicle: {
+									interlaced: false
+								},
+								webp: {
+									quality: 75
 								}
-							],
+							}
+						}
+					],
 					type: 'asset/resource'
 				},
 				{
@@ -102,16 +100,6 @@ module.exports = (env) => {
 			new webpack.ProgressPlugin(),
 			new MiniCssExtractPlugin({
 				filename: '[name].[contenthash].css'
-			}),
-			new GhPagesWebpackPlugin({
-				path: path.resolve(__dirname, 'build'),
-				options: {
-					message: 'Update Home Page',
-					user: {
-						name: 'Alexsandr Pavlov',
-						email: 'buterfeed@gmail.com'
-					}
-				}
 			})
 		],
 		devServer: {
