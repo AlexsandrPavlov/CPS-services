@@ -1,1 +1,5 @@
-@use '/src/scss/template.scss'
+@use '/src/scss/abstracts/__var' ;
+@use '/src/scss/abstracts/__mix';
+@use '/src/scss/base/__fonts';
+@use '/src/scss/base/__normalize';
+@use '/src/scss/layout/_header'

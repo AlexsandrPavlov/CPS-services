@@ -39,12 +39,32 @@ module.exports = (env) => {
 								}
 							}
 						},
+						'group-css-media-queries-loader',
 						'resolve-url-loader',
 						{ loader: 'sass-loader', options: { sourceMap: true } }
 					]
+				},
+				{
+					test: /\.(woff|woff2|eot|ttf|otf)$/i,
+					type: 'asset/resource',
+					generator: {
+						filename: 'fonts/[name][ext]'
+					}
+				},
+				{
+					test: /\.(?:js|mjs|cjs)$/,
+					exclude: /node_modules/,
+					use: {
+						loader: 'babel-loader',
+						options: {
+							targets: 'defaults',
+							presets: [['@babel/preset-env']]
+						}
+					}
 				}
 			]
 		},
+
 		plugins: [
 			new HtmlWebpackPlugin({
 				template: path.resolve(__dirname, 'src', 'index.html')
