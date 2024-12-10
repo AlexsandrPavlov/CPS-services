@@ -9,3 +9,14 @@
 		@content;
 	}
 }
+@mixin mouse-in-use() {
+	@media (hover:hover) {
+		@content;
+	}
+}
+
+@mixin touch-in-use() {
+	@media (hover: none) {
+		@content;
+	}
+}

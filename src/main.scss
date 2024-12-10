@@ -2,4 +2,10 @@
 @use '/src/scss/abstracts/__mix';
 @use '/src/scss/base/__fonts';
 @use '/src/scss/base/__normalize';
-@use '/src/scss/layout/_header'
+@use '/src/scss/layout/_aside';
+@use '/src/scss/layout/_footer';
+@use '/src/scss/layout/_header';
+@use '/src/scss/layout/_main';
+@use '/src/scss/components/btn/_btn-base';
+@use '/src/scss/components/modal/_modal';
+@use '/src/scss/components/pages/home-page/first_block.scss';

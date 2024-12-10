@@ -1,5 +1,5 @@
 @use '/../src/scss/abstracts/__var';
-@use '/../src/scss/abstracts/_mix';
+@use '/../src/scss/abstracts/__mix';
 *,
 *::before,
 *::after {
@@ -8,22 +8,23 @@
 	border: 0;
 	box-sizing: border-box;
 }
-
 a {
 	text-decoration: none;
 	color: inherit;
 }
-
+button {
+	background-color: transparent;
+	outline: none;
+	transition: all 0.4s;
+}
 ul,
 ol,
 li {
 	list-style: none;
 }
-
 img {
 	vertical-align: top;
 }
-
 h1,
 h2,
 h3,
@@ -33,13 +34,36 @@ h6 {
 	font-weight: inherit;
 	font-size: inherit;
 }
-
 html,
 body {
-	height: 100%;
 	line-height: 1;
 	font-size: 16px;
+	min-width: 320px;
 	font-family: 'TT Lakes';
-	color: _var.$color-text;
+	color: _var.$black;
 	background-color: _var.$color-background;
+  	height: 100%;
+  	overflow-x: hidden;
+}
+.overflow-block{
+	overflow-y: hidden;
+  }
+.page-container {
+	max-width: 1440px;
+	margin: 0 auto;
+	position: relative;
+}
+
+@include _mix.xl{
+	.contenet_container{
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+	}
+}
+@include _mix.xxl{
+	.contenet_container{
+		height: 100%;
+	}
 }
